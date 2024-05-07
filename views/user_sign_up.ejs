@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .custom-form{
+      margin-top: 1rem;
+      background-color: azure;
+    }
+   
+  </style>
+</head>
+<body class="body">
+ 
+<div class="custom-container">
+  <form class="custom-form" action="/create" method="POST">
+    <div class="custom-column">
+      <h3 class="custom-heading">Sign up</h3>
+      <div class="custom-input-group">
+        <label class="custom-label" for="username">User name</label>
+        <input type="text" id="username" name="username" class="custom-input" required />
+      </div>
+      <div class="custom-input-group">
+        <label class="custom-label" for="email">Email address</label>
+        <input type="email" id="email" name="email" class="custom-input" required />
+      </div>
+      <div class="custom-input-group">
+        <label class="custom-label" for="password">Password</label>
+        <input type="password" id="password" name="password" class="custom-input" required />
+      </div>
+      <div class="custom-input-group">
+        <label class="custom-label" for="confirm_password">Confirm password</label>
+        <input type="password" id="confirm_password" name="confirm_password" class="custom-input" required />
+      </div>
+      <div class="custom-input-group">
+        <label class="custom-label" for="role">Role</label>
+        <select class="custom-select" id="role" name="role" required>
+          <option selected value="employee">Employee</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div class="custom-button-group">
+        <button type="submit" class="custom-button">SIGN UP</button>
+      </div>
+      <div class="custom-text">
+        <p>Already registered? <a href="/">Login</a></p>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

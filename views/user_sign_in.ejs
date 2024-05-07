@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .custom-form{
+      margin-top: 7rem;
+      background-color: azure;
+    }
+  </style>
+</head>
+<body>
+  
+<div class="custom-container">
+  <form class="custom-form" method="POST" action="/create-session">
+    <div class="custom-column">
+      <div class="custom-row">
+        <h3 class="custom-heading">Sign in</h3>
+        <div class="custom-input-group">
+          <label class="custom-label" for="email">Email address</label>
+          <input type="email" id="email" name="email" class="custom-input" />
+        </div>
+        <div class="custom-input-group">
+          <label class="custom-label" for="password">Password</label>
+          <input type="password" id="password" name="password" class="custom-input" />
+        </div>
+        <div class="custom-button-group">
+          <button type="submit" class="custom-button">LOGIN</button>
+          <p class="custom-text">Not a user? <a href="/sign-up">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

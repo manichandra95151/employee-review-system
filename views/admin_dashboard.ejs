@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .custom-container-fluid {
+  margin-top: 20px;
+}
+
+.custom-heading {
+  margin-top: 0;
+  color:whitesmoke;
+  font-weight: 900;
+}
+
+.custom-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.custom-card {
+  width: 19rem;
+  border:2px solid white;
+  border-radius: 5px;
+}
+
+.custom-card-body {
+  padding: 15px;
+}
+
+.custom-card-img-top {
+  width: 40px;
+}
+
+.custom-card-title {
+  margin-top: 0;
+  font-weight: 600;
+  color:white;
+}
+
+.custom-card-subtitle {
+  margin-bottom: 0;
+  color:azure;
+  font-weight: 500;
+}
+
+.custom-button {
+  width: 48%;
+}
+
+.custom-modal-title {
+  margin-top: 0;
+}
+.btnn{
+  border: 2px solid black;
+  border-radius: 5px;
+  color:black
+}
+.btn{
+      border: 2px solid white;
+      color:white;
+    }
+    .btn:hover{
+      color:antiquewhite !important;
+    }
+
+  </style>
+</head>
+<body>
+  <% if(locals.user && locals.user.role === 'admin') { %>
+    <div class="custom-container-fluid p-4">
+      <h1 class="custom-heading mx-auto text-center">All employees</h1>
+      <div class="custom-flex-container justify-content-center justify-content-md-start">
+        <% for (user of users) { %>
+        <div class="custom-card shadow m-2" style="width: 19rem">
+          <div class="custom-card-body">
+            <img src="https://cdn-icons-png.flaticon.com/512/7277/7277044.png" alt="" class="custom-card-img-top" />
+            <h5 class="custom-card-title"><%= user.username %></h5>
+            <h6 class="custom-card-subtitle mb-2 text-secondary"><%= user.email %></h6>
+            <p class="custom-card-subtitle mb-2 text-muted">Role: <%= user.role %></p>
+            <div class="custom-flex-container justify-content-between">
+              <!-- delete button -->
+              <a href="/destroy/<%= user._id %>" class=" btn  mb-1" style="width: 48%">
+                <i class="fa-solid fa-trash"></i> Delete
+              </a>
+              <!-- edit button -->
+              <a href="/edit-employee/<%= user._id %>" class=" btn  mb-1" style="width: 48%">
+                <i class="fa-solid fa-pen-to-square"></i> Edit
+              </a>
+    
+              <!-- assign review button -->
+              <a href="" class=" btn  mb-1 my-1" style="width: 100%" data-bs-toggle="modal"
+                data-bs-target="#user<%= user.id %>" data-bs-whatever="@mdo">
+                <i class="fa-solid fa-file"></i> Assign review
+              </a>
+    
+              <!-- Modal for assigning review -->
+              <div class="modal fade" id="user<%= user.id %>" tabindex="-1" aria-labelledby="<%= user.id %>"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="custom-modal-title fs-5" id="exampleModalLabel">Assign review</h1>
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="review/assign-review/<%= user._id %>" method="POST">
+                        <div>Reviewer: <%= user.username %></div>
+                        <div class="custom-form-group mb-3">
+                          <label for="recipient-name" class="col-form-label">Recipient:</label>
+                          <select class="custom-form-select form-select" aria-label="Default select example"
+                            name="recipient_email">
+                            <% for (recipient of users) { %>
+                            <!-- filter the current user from the list of recipients -->
+                            <% if(recipient.email !== user.email) { %>
+                            <option value="<%= recipient.email %>">
+                              <%= recipient.email %> (<%= recipient.username %>)
+                            </option>
+                            <% } %>
+                            <% } %>
+                          </select>
+                        </div>
+                        <div class="flex justify-end">
+                          <button data-modal-hide="assignReviewModal<%= user.id %>" type="button" class="btnn">Cancel</button>
+                          <button type="submit" class="btnn">Assign</button>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <% } %>
+    
+</body>
+</html>

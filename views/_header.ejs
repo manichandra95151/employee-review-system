@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-md nav-light" style="background: #1E293B; box-shadow: 0px 15px 10px -15px #111111; backdrop-filter: blur(63px); ">
+  <div class="container-fluid">
+    <a class="navbar-brand me-lg-5" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 ml-2 text-light">
+          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+        </svg>
+      <span class="text-center fw-semibold text-light">Employee Review System</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if(locals.user) {%>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+        <% if(locals.user.role === 'admin') {%>
+        <li class="nav-item ms-lg-4">
+          <a style="color: antiquewhite;"
+            class="nav-link fw-semibold "
+            aria-current="page"
+            href="/add-employee"
+            ><i class="fa-solid fa-plus"></i> Add employee</a
+          >
+        </li>
+        <%} %>
+      </ul>
+
+      <form class="d-flex justify-content-end right-0">
+        <div class="btn btn-warning rounded-pill fw-semibold" style="background-color:rgba(240, 248, 255, 0.611);">
+          <i class="fa-solid fa-user"></i> <%= user.username %>
+        </div>
+        <a
+          class="btn btn-danger mx-2 rounded-pill fw-semibold"
+          href="/sign-out"
+        >
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Sign Out</a
+        >
+      </form>
+    </div>
+    <%} %>
+  </div>
+</nav>
