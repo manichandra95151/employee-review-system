@@ -1,4 +1,4 @@
-package.json:{
+{
   "name": "employee_review_system",
   "version": "1.0.0",
   "description": "",
@@ -31,4 +31,3 @@ package.json:{
     "nodemon": "^2.0.22"
   }
 }
- 
