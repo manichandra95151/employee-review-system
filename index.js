@@ -38,14 +38,7 @@ app.use(
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 100,
-    },
-    store: MongoStore.create({
-      mongoUrl: MONGODB_URL,
-      autoRemove: 'disabled',
-    }),
-    function(err) {
-      console.log(err || 'connect-mongodb setup ok');
-    },
+    }
   })
 );
 
